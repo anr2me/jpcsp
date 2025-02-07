@@ -7,7 +7,7 @@ on:
             description: 'Branch, tag, or commit SHA1 to build'
             required: true
             type: string
-            default: 'HEAD'
+            default: ''
 jobs:
   build:
     runs-on: ubuntu-latest
