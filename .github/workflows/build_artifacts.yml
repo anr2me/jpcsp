@@ -2,12 +2,20 @@ name: Build Artifacts
 
 on:
    workflow_dispatch:
-
+      inputs:
+         refToBuild:
+            description: 'Branch, tag, or commit SHA1 to build'
+            required: true
+            type: string
+            default: 'HEAD'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.refToBuild }}
+          fetch-depth: 0
       
       - name: Set up JDK 8
         uses: actions/setup-java@v4
