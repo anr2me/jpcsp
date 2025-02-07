@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1 # v2 or newer doesn't support short SHA ref
         with:
-          ref: ${{ inputs.refToBuild }}
+          ref: ${{ inputs.refToBuild != '' && inputs.refToBuild || github.sha }}
           fetch-depth: 0
       
       - name: Set up JDK 8
